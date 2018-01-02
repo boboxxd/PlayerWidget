@@ -9,6 +9,16 @@
 #include <QPen>
 #include <QHBoxLayout>
 #include <QPainter>
+
+
+#include <VLCQtCore/Common.h>
+#include <VLCQtCore/Instance.h>
+#include <VLCQtCore/Media.h>
+#include <VLCQtCore/MediaPlayer.h>
+#include <VLCQtWidgets/WidgetVideo.h>
+#include <VLCQtCore/Error.h>
+
+
 ///
 /// \brief The mylabel class
 /// basic show layer
