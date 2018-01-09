@@ -2,6 +2,9 @@
 #include "ui_widget.h"
 #include <QDebug>
 
+#include <QImage>
+
+
 Widget::Widget(QWidget *parent) :
     QWidget(parent),
     ui(new Ui::Widget)
@@ -14,13 +17,10 @@ Widget::Widget(QWidget *parent) :
     layout->addWidget(player);
     this->setLayout(layout);
     timerId=startTimer(1000);
-
-    connect(this,&Widget::image,player,&PlayerWidget::updateFrame);
+    con=new Controller;
+    con->operate("rtsp://admin:ad53937301@49.91.240.77:554/h264/ch1/main/av_stream");
+    connect(con,&Controller::image,player,&PlayerWidget::updateFrame);
     connect(this,&Widget::Alarm,player,&PlayerWidget::updateAlarm);
-//  emit image(QPixmap("/home/hhit/code/build-HHPlayer_v2-Desktop_Qt_5_9_2_GCC_64bit-Debug/output/alarm_1376.jpg"));
-//  QVector<QRect> rectvec={QRect(0,0,100,100),QRect(105,105,100,100),QRect(210,210,100,100)};
-//  emit Alarm(rectvec);
-
 }
 
 
@@ -28,9 +28,9 @@ Widget::Widget(QWidget *parent) :
  void Widget::timerEvent(QTimerEvent *event)
  {
      qDebug()<<"Widget::timeoutslot()";
-     emit image(QPixmap("/home/hhit/code/build-HHPlayer_v2-Desktop_Qt_5_9_2_GCC_64bit-Debug/output/alarm_1376.jpg"));
+     //emit image(QPixmap("/Users/xuxudong/Mycode/PlayerWidget/test.jpg"));
      n+=5;
-     QVector<QRect> rectvec={QRect(n,n,100,100),QRect(n+5,n,100,100),QRect(210,210,100,100)};
+     QVector<QRect> rectvec={QRect(n,n,100,100),QRect(n+5,n+10,100,100),QRect(210,210,100,100)};
      emit Alarm(rectvec);
  }
 

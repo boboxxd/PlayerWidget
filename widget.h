@@ -5,6 +5,9 @@
 #include "playerwidget.h"
 #include <QTimer>
 #include <QTime>
+#include "getimage.h"
+
+using namespace cv;
 namespace Ui {
 class Widget;
 }
@@ -20,7 +23,7 @@ public:
 signals:
     void image(const QPixmap &);
     void Alarm(const QVector<QRect> &);
-
+    void seturl(const QString&);
 
 private:
     Ui::Widget *ui;
@@ -29,6 +32,9 @@ private:
     int timerId;
 
     int n=-5;
+
+    Controller *con;
+
 };
 
 #endif // WIDGET_H

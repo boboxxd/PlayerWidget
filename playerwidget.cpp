@@ -42,13 +42,6 @@ void Basiclabel::paintEvent(QPaintEvent *e)
     }
 }
 
-///
-/// \brief resizeEvent
-///
-void Basiclabel::resizeEvent(QResizeEvent *)
-{
-    qDebug()<<"Basiclabel::resizeEvent(QResizeEvent *)"<<this->width()<<":"<<this->height();
-}
 
 ///
 /// \brief Basiclabel::addvec
@@ -162,6 +155,7 @@ PlayerWidget::PlayerWidget(QWidget *parent) : QWidget(parent)
 ///
 void PlayerWidget::updateFrame(const QPixmap& pix)
 {
+    qDebug()<<"接收一帧图片";
     showwidget->updateImage(pix);
 }
 
